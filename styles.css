@@ -1,5 +1,6 @@
 .MMM-MediaSlideshow {
-    position: static;
+    left: 0px !important;
+    top: 0px !important;
 }
 
 .MMM-MediaSlideshow img.animate,
