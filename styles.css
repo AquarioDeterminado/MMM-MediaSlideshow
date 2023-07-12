@@ -1,9 +1,7 @@
-
-.MMM-MediaSlideshow
 .MMM-MediaSlideshow img,
-.MMM-MediaSlideshow video {
-    width: 100%;
+.MMM-MediaSlideshow video{
     height: 100%;
+    width: 100%;
 }
 
 .MMM-MediaSlideshow img.animate,

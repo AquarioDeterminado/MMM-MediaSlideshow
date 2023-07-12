@@ -8,45 +8,50 @@ module.exports = NodeHelper.create({
         this.moduleConfigs = [];
     },
     sortByFilename: function (a, b) {
-        aL = a.filename.toLowerCase();
-        bL = b.filename.toLowerCase();
+        aL = a.filepath.toLowerCase();
+        bL = b.filepath.toLowerCase();
         if (aL > bL) 
 			return 1;
 		else 
 			return -1;
     },
     getMediaFromPath: function(config){
+
         var mediaList = [];
-        var mediaPath = config.mediaPath;
-        var filesFromDir = FileSistemMediaSlideshow.readdirSync(path = mediaPath);
-        
-        for (var currentMediaIndex = 0; currentMediaIndex < filesFromDir.length; currentMediaIndex++)
+        var mediaPaths = config.mediaPath;
+
+        for(var i = 0; i < mediaPaths.length; i++)
         {
-
-            var currentMedia = null;
-            var fileSufixs = filesFromDir[currentMediaIndex].split(".");
+            var currentPath = mediaPaths[i];
+            var filesFromDir = FileSistemMediaSlideshow.readdirSync(path = currentPath);
             
-            var ImageFileTypes = [];
-            ImageFileTypes = config.validImageFileExtensions.split(',');
-            var VideoFileTypes = [];
-            VideoFileTypes = config.validVideoFileExtensions.split(',');
+            for (var currentMediaIndex = 0; currentMediaIndex < filesFromDir.length; currentMediaIndex++)
+            {
 
-            //Checks if extension of files is either on images or videos accepted list
-            if(ImageFileTypes.indexOf(fileSufixs[fileSufixs.length - 1]) != -1)
-            {
-                currentMedia = {filename: filesFromDir[currentMediaIndex], typeOfMedia: "Image"};
-            }
-            else if(VideoFileTypes.indexOf(fileSufixs[fileSufixs.length - 1]) != -1)
-            {
-                currentMedia = {filename: filesFromDir[currentMediaIndex], typeOfMedia: "Video"};
+                var currentMedia = null;
+                var fileSufixs = filesFromDir[currentMediaIndex].split(".");
+                
+                var ImageFileTypes = [];
+                ImageFileTypes = config.validImageFileExtensions.split(',');
+                var VideoFileTypes = [];
+                VideoFileTypes = config.validVideoFileExtensions.split(',');
+
+                //Checks if extension of files is either on images or videos accepted list
+                if(ImageFileTypes.indexOf(fileSufixs[fileSufixs.length - 1]) != -1)
+                {
+                    currentMedia = {filepath: currentPath + filesFromDir[currentMediaIndex], typeOfMedia: "Image"};
+                }
+                else if(VideoFileTypes.indexOf(fileSufixs[fileSufixs.length - 1]) != -1)
+                {
+                    currentMedia = {filepath: currentPath + filesFromDir[currentMediaIndex], typeOfMedia: "Video"};
+                }   
+                
+                if( currentMedia != null)
+                {
+                    mediaList.push(currentMedia);
+                }
             }   
-            
-            if( currentMedia != null)
-            {
-                mediaList.push(currentMedia);
-            }
         }
-
         //Sorts
         if(config.orderByName) mediaList.sort(this.sortByFilename);
 

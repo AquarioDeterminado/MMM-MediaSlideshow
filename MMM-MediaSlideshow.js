@@ -20,7 +20,7 @@
 Module.register("MMM-MediaSlideshow", {
 
     defaults: {
-        mediaPath: "modules/MMM-MediaSlideshow/defaultMedia/",
+        mediaPath: ["modules/MMM-MediaSlideshow/defaultMedia/"],
         
         displayInterval: 10 * 1000,
 
@@ -168,7 +168,7 @@ Module.register("MMM-MediaSlideshow", {
                     }
 
 					// set the image location
-					media.src = encodeURI(this.config.mediaPath + this.mediaList[this.currentMediaIndex].filename);
+					media.src = encodeURI(this.mediaList[this.currentMediaIndex].filepath);
                     
                     media.classList.add("animate");
                     // add the image to the dom
