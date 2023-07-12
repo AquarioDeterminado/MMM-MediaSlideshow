@@ -9,7 +9,7 @@
 			module: "MMM-MediaSlideshow",
 			position: "fullscreen_below",
 			config: {
-				mediaPath: 'modules/MMM-MediaSlideshow/defaultMedia/',
+				mediaPaths: ["modules/MMM-MediaSlideshow/defaultMedia/"],
                 displayInterval: 10000,
 				validImageFileExtensions: 'png,jpg,jpeg',
         		validVideoFileExtensions: 'mp3, mp4',
@@ -19,7 +19,7 @@
 ```
 | Paramater | Descrip.  | Defaults |
 |:--|:-:|--:|
-| **mediaPath** | The path to the media folder |  ``` 'modules/MMM-MediaSlideshow/defaultMedia/' ```|
+| **mediaPaths** | The paths to the media folders |  ``` ["modules/MMM-MediaSlideshow/defaultMedia/"] ```|
 | **displayInterval** | How long each piece of media is displayed| ``` 10 * 1000 (10s) ``` |
 | **orderByName** | True if the media should be displayed by alphabetical order |``` true ```|
 | **validImageFileExtensions** | The types of images to be displayed |``` 'png,jpg,jpeg' ```|

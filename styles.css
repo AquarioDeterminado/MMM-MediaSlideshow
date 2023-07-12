@@ -1,7 +1,5 @@
-.MMM-MediaSlideshow img,
-.MMM-MediaSlideshow video{
-    height: 100%;
-    width: 100%;
+.MMM-MediaSlideshow {
+    position: static;
 }
 
 .MMM-MediaSlideshow img.animate,

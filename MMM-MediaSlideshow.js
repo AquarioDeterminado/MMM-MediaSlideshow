@@ -20,7 +20,7 @@
 Module.register("MMM-MediaSlideshow", {
 
     defaults: {
-        mediaPath: ["modules/MMM-MediaSlideshow/defaultMedia/"],
+        mediaPaths: ["modules/MMM-MediaSlideshow/defaultMedia/"],
         
         displayInterval: 10 * 1000,
 
@@ -41,7 +41,7 @@ Module.register("MMM-MediaSlideshow", {
         this.config.validVideoFileExtensions = this.config.validVideoFileExtensions.toLowerCase();
         // set no error
 		this.errorMessage = null;
-        if (this.config.mediaPath.length == 0) 
+        if (this.config.mediaPaths.length == 0) 
         {
             this.errorMessage = "MMM-MediaSlideshow: Missing Media Paths;";
         }

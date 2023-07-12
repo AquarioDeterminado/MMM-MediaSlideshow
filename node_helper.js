@@ -2,14 +2,15 @@
 
 var NodeHelper = require("node_helper");
 var FileSistemMediaSlideshow = require("fs");
+const { forEach } = require("lodash");
 
 module.exports = NodeHelper.create({
     start: function() {
         this.moduleConfigs = [];
     },
     sortByFilename: function (a, b) {
-        aL = a.filepath.toLowerCase();
-        bL = b.filepath.toLowerCase();
+        aL = a.filename.toLowerCase();
+        bL = b.filename.toLowerCase();
         if (aL > bL) 
 			return 1;
 		else 
@@ -18,7 +19,7 @@ module.exports = NodeHelper.create({
     getMediaFromPath: function(config){
 
         var mediaList = [];
-        var mediaPaths = config.mediaPath;
+        var mediaPaths = config.mediaPaths;
 
         for(var i = 0; i < mediaPaths.length; i++)
         {
@@ -39,11 +40,11 @@ module.exports = NodeHelper.create({
                 //Checks if extension of files is either on images or videos accepted list
                 if(ImageFileTypes.indexOf(fileSufixs[fileSufixs.length - 1]) != -1)
                 {
-                    currentMedia = {filepath: currentPath + filesFromDir[currentMediaIndex], typeOfMedia: "Image"};
+                    currentMedia = {filename: filesFromDir[currentMediaIndex], path: currentPath, typeOfMedia: "Image"};
                 }
                 else if(VideoFileTypes.indexOf(fileSufixs[fileSufixs.length - 1]) != -1)
                 {
-                    currentMedia = {filepath: currentPath + filesFromDir[currentMediaIndex], typeOfMedia: "Video"};
+                    currentMedia = {filename: filesFromDir[currentMediaIndex], path: currentPath,typeOfMedia: "Video"};
                 }   
                 
                 if( currentMedia != null)
@@ -52,10 +53,18 @@ module.exports = NodeHelper.create({
                 }
             }   
         }
+        
         //Sorts
         if(config.orderByName) mediaList.sort(this.sortByFilename);
 
-        return mediaList;
+        var finalMediaList = [];
+        mediaList.forEach(media => {
+            var newElement = {filepath: media.path + media.filename, typeOfMedia: media.typeOfMedia};
+            finalMediaList.push(newElement);
+        }); 
+
+
+        return finalMediaList;
     },
     socketNotificationReceived: function(notification, payload) {
         if (notification === 'MEDIASLIDESHOW_REGISTER_CONFIG') {
