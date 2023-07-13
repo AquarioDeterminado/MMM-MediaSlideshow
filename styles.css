@@ -19,7 +19,8 @@
 }
 
 
-@keyframes slidein {
+
+@keyframes slidein_left {
     from {
       margin-left: 100%;
     }
@@ -30,12 +31,56 @@
     }
   }
 
-  @keyframes slideout {
+  @keyframes slideout_left {
     from {
       margin-left: 0%;
     }
 
     to {
         margin-left: 100%;
+      }
+  }
+
+
+  @keyframes slidein_right {
+    from {
+      margin-right: 100%;
+    }
+  
+    to {
+      margin-right: 0%;
+      width: 100%;
+    }
+  }
+
+  @keyframes slideout_right {
+    from {
+      margin-right: 0%;
+    }
+
+    to {
+        margin-right: 100%;
+      }
+  }
+  
+
+  @keyframes slidein_top {
+    from {
+      margin-top: 100%;
+    }
+  
+    to {
+      margin-top: 0%;
+      width: 100%;
+    }
+  }
+
+  @keyframes slideout_top {
+    from {
+      margin-top: 0%;
+    }
+
+    to {
+        margin-top: 100%;
       }
   }
