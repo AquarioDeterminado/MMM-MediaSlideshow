@@ -170,10 +170,16 @@ Module.register("MMM-MediaSlideshow", {
 					// set the image location
 					media.src = encodeURI(this.mediaList[this.currentMediaIndex].filepath);
                     
-                    media.classList.add("animate");
+                    media.classList.add("fadeInOut");
                     // add the image to the dom
   					wrapper.appendChild(media);
 			    }
+
+                [
+                    "displayDuration", 
+                    "fadeInTime"
+                ].forEach((stat) => wrapper.style.setProperty(`--${stat}`, self.config[stat]));
+        
             }
             else  
             {
@@ -182,11 +188,7 @@ Module.register("MMM-MediaSlideshow", {
             }
         }
 
-        [
-            "displayDuration", 
-            "fadeInTime"
-        ].forEach((stat) => wrapper.style.setProperty(`--${stat}`, self.config[stat]));
-
+        
         
 
         // return the dom
