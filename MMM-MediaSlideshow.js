@@ -92,6 +92,23 @@ Module.register("MMM-MediaSlideshow", {
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper";
 
+        var map = document.createElement("map");
+        map.setAttribute("id", "map");
+        map.setAttribute("name", "map");
+
+        var areasNumber = 4;
+        for(var i = 1; i <= areasNumber; i++)
+        {
+            var area = document.createElement("area")
+            area.setAttribute("id", '${i}');
+            area.setAttribute("shape", "rect");
+            var width = (1080 / areasNumber) * i;
+            area.setAttribute("coords", '0,0,1920,${width}');
+            document.getElementById("map").appendChild(area);
+        }
+
+        document.appendChild(map);
+
         var self = this;
         
         if (this.errorMessage != null) 
@@ -170,6 +187,7 @@ Module.register("MMM-MediaSlideshow", {
 					// set the image location
 					media.src = encodeURI(this.mediaList[this.currentMediaIndex].filepath);
                     
+                    media.setAttribute("usemap", '#${map.name}')
                     media.classList.add("fadeInOut");
                     // add the image to the dom
   					wrapper.appendChild(media);

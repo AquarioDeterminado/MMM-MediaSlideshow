@@ -8,6 +8,16 @@
     animation: fadein var(--fadeInTime, 2s), var(--fadeInTime, 2s) fadeout var(--displayDuration, 8s);
 }
 
+#1,
+#3{
+    animation: var(--fadeInTime, 2s) slideout_top var(--displayDuration, 8s)
+}
+
+#2,
+#4{
+    animation: var(--fadeInTime, 2s) slideout_bottom var(--displayDuration, 8s)
+}
+
 @keyframes fadein {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -84,3 +94,25 @@
         margin-top: 100%;
       }
   }
+
+  @keyframes slidein_bottom {
+    from {
+      margin-bottom: 100%;
+    }
+  
+    to {
+      margin-bottom: 0%;
+      width: 100%;
+    }
+  }
+
+  @keyframes slideout_bottom {
+    from {
+      margin-bottom: 0%;
+    }
+
+    to {
+        margin-bottom: 100%;
+      }
+  }
+
