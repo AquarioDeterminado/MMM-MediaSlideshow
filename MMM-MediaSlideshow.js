@@ -143,14 +143,15 @@ Module.register("MMM-MediaSlideshow", {
                         media.className = "video";
                         media.setAttribute("autoplay", "autoplay");
                         
+                        var timeForFadeOut = 0;
+                        self.config.displayDuration = timeForFadeOut + "s";
 
                         //Resets paramaters for video to play until the end;
                         media.onloadedmetadata = function() {
                             
                             var video = this;
                             //Keeps how long the video will me showing for (Important for fade out)
-                            var timeForFadeOut = 0;
-                            self.config.displayDuration = timeForFadeOut + "s";
+                            
                             //Resets old timer 
                             clearInterval(self.interval)
                             
