@@ -92,7 +92,7 @@ Module.register("MMM-MediaSlideshow", {
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper";
 
-        var map = document.createElement("map");
+s not wo        var map = document.createElement("map");
         map.setAttribute("id", "map");
         map.setAttribute("name", "map");
 
