@@ -92,7 +92,7 @@ Module.register("MMM-MediaSlideshow", {
         var wrapper = document.createElement("div");
         wrapper.className = "wrapper";
 
-s not wo        var map = document.createElement("map");
+        var map = document.createElement("map");
         map.setAttribute("id", "map");
         map.setAttribute("name", "map");
 
@@ -104,10 +104,10 @@ s not wo        var map = document.createElement("map");
             area.setAttribute("shape", "rect");
             var width = (1080 / areasNumber) * i;
             area.setAttribute("coords", '0,0,1920,${width}');
-            document.getElementById("map").appendChild(area);
+            map.appendChild(area);
         }
 
-        document.appendChild(map);
+        wrapper.appendChild(map);
 
         var self = this;
         
